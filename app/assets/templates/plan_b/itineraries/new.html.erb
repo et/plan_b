@@ -1,0 +1,22 @@
+<h1>
+  <small>{{ itinerary.title }}</small>
+</h1>
+
+<div class="alert-box success" ng-show="flash.success">
+  {{ flash.success }}
+</div>
+
+<div class="alert-box alert" ng-show="flash.error">
+  {{ flash.error }}
+</div>
+
+<form>
+  <div class="row collapse">
+    <div class="large-9 columns">
+      <input type="text" ng-model="itinerary.title" placeholder="<%= I18n.translate 'plan_b.itineraries.form.new.title_placeholder' %>">
+    </div>
+    <div class="large-3 columns">
+      <a href='#' class="button prefix" ng-click="save()"><%= I18n.translate 'plan_b.itineraries.form.new.submit' %></a>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,87 @@
+<h1>
+  {{ itinerary.title }}
+  <small><a href='#' ng-click='addTemplate("hiking")'><%= I18n.translate 'plan_b.itineraries.form.add_hike' %></a></small>
+</h1>
+
+<div class="alert-box success" ng-show="flash.success">
+  {{ flash.success }}
+</div>
+
+<div class="alert-box alert" ng-show="flash.error">
+  {{ flash.error }}
+</div>
+
+<form>
+
+  <div ng-repeat="template in itinerary.hiking_templates">
+    <fieldset>
+      <legend>
+        <%= I18n.translate 'plan_b.itineraries.form.legends.hike' %>
+        <a href="#" ng-click="removeTemplate($index)">Remove</a>
+      </legend>
+      <div class="row">
+        <div class="large-4 columns">
+          <label><%= PlanB::HikingTemplate.human_attribute_name 'start' %></label>
+          <input ng-model="template.start">
+        </div>
+        <div class="large-4 columns">
+          <label><%= PlanB::HikingTemplate.human_attribute_name 'end' %></label>
+          <input ng-model="template.end">
+        </div>
+        <div class="large-4 columns">
+          <label><%= PlanB::HikingTemplate.human_attribute_name 'distance' %></label>
+          <input ng-model="template.distance">
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+  <fieldset>
+    <legend><%= I18n.translate 'plan_b.itineraries.form.legends.details' %></legend>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <label>Title</label>
+        <input type="text" ng-model="itinerary.title" placeholder="<%= I18n.translate 'plan_b.itineraries.form.new.title_placeholder' %>">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-6 columns">
+        <label><%= PlanB::Itinerary.human_attribute_name('start') %></label>
+        <input data-date-format="yyyy-mm-dd" ng-model="itinerary.start" class="date">
+      </div>
+      <div class="large-6 columns">
+        <label><%= PlanB::Itinerary.human_attribute_name('end') %></label>
+        <input data-date-format="yyyy-mm-dd" ng-model="itinerary.end" class="date">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <label><%= PlanB::Itinerary.human_attribute_name('preplanning') %></label>
+        <textarea ng-model="itinerary.preplanning" placeholder="Enter in some details about what you're planning"></textarea>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <label><%= PlanB::Itinerary.human_attribute_name('summary') %></label>
+        <textarea ng-model="itinerary.summary" placeholder="After the trip, enter in a summary of how awesome it was."></textarea>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="large-12 columns">
+        <label><input type="checkbox"><span class="custom checkbox"></span> Published?</label>
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="row">
+    <div class="large-3 columns">
+      <a href='#' class="button prefix" ng-click="save()"><%= I18n.translate 'plan_b.itineraries.form.edit.submit' %></a>
+    </div>
+  </div>
+</form>

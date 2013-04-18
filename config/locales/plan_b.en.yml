@@ -1,0 +1,31 @@
+en:
+  activerecord:
+    attributes:
+      plan_b/hiking_template:
+        distance: Distance
+        end: Ending trailhead
+        start: Starting trailhead
+      plan_b/itinerary:
+        title: Title
+  plan_b:
+    itineraries:
+      types:
+        backpacking: Backpacking
+        basic: Basic
+        climbing: Climbing
+        hiking: Hiking
+        sight_seeing: Sight seeing
+      create_new: Create new
+      none_created: You haven't created any itineraries yet.
+      form:
+        add_hike: Add Hike
+        legends:
+          details: Details
+          hike: Hike
+        edit:
+          submit: Save Itinerary
+        new:
+          submit: Create Itinerary
+          title_placeholder: Name your itinerary
+    trips:
+      title: Trips

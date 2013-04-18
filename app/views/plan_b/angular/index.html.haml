@@ -1,0 +1,38 @@
+!!! 5
+%html(ng-app='plan-b' mount-path='#{plan_b.root_path[0..-2]}')
+  %head
+    %meta{content: "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}
+    %meta{content: "NONE,NOARCHIVE", name: "robots"}
+    %title Plan B
+    = csrf_meta_tag
+    = stylesheet_link_tag 'plan_b/application', :media => :all
+    = javascript_include_tag 'vendor/custom.modernizr'
+
+  %body
+    .alert-box(ng-class="alertType" ng-show="alertShow")
+      {{ alertMessage }}
+
+    .row
+      .large-2.columns
+        %h1
+          = image_tag 'plan_b/plan_b.png'
+    .row
+      .large-10.push-2.columns
+        %div(ng-view)
+      .large-2.pull-10.columns(ng-controller="ItinerariesCtrl")
+        = PlanB::Itinerary.model_name.human.pluralize
+        = link_to t('plan_b.itineraries.create_new'), new_itinerary_path, class: 'button tiny secondary'
+        %ul.side-nav
+          %li(ng-hide="itineraries.length")
+            = t('plan_b.itineraries.none_created')
+          %li(ng-repeat="itinerary in itineraries")
+            %a(href='/plan_b/itineraries/{{itinerary.id}}/edit') {{itinerary.title}}
+    %footer.row
+      .large-12.columns
+        %hr
+        .row
+          .large-6.columns
+            %p Plan B
+
+    = javascript_include_tag 'plan_b/application'
