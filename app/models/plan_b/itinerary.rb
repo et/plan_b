@@ -12,7 +12,8 @@ module PlanB
 
     validates :title, presence: true, uniqueness: true
 
-    scope :upcoming, where('start > ?', Time.now)
-    scope :past,     where('start < ?', Time.now)
+    scope :upcoming,  where('start > ?', Time.now)
+    scope :past,      where('start < ?', Time.now)
+    scope :published, where(published: true)
   end
 end

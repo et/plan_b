@@ -16,9 +16,10 @@ describe PlanB::Itinerary do
 
   context 'scopes' do
     before do
-      @upcoming_itinerary     = PlanB::Itinerary.create title: 'Great stuff',  start: Date.tomorrow
-      @past_itinerary         = PlanB::Itinerary.create title: 'Better stuff', start: Date.yesterday
-      @without_date_itinerary = PlanB::Itinerary.create title: 'Bad stuff'
+      @upcoming_itinerary     = PlanB::Itinerary.create title: 'Upcoming', start: Date.tomorrow
+      @past_itinerary         = PlanB::Itinerary.create title: 'Past',     start: Date.yesterday
+      @without_date_itinerary = PlanB::Itinerary.create title: 'Without date'
+      @published_itinerary    = PlanB::Itinerary.create title: 'Published', published: true
     end
 
     it 'should only return upcoming itineraries' do
@@ -27,6 +28,10 @@ describe PlanB::Itinerary do
 
     it 'should only return past itineraries' do
       PlanB::Itinerary.past.should == [@past_itinerary]
+    end
+
+    it 'should only return published itineraries' do
+      PlanB::Itinerary.published.should == [@published_itinerary]
     end
   end
 end
