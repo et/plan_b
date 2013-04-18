@@ -2,6 +2,7 @@ require 'sass'
 
 module PlanB
   class Engine < ::Rails::Engine
+    require 'zurb-foundation'
     isolate_namespace PlanB
 
     initializer "zurb-foundation" do
