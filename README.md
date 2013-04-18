@@ -11,22 +11,31 @@ Totally a work in progress. Don't use this.
 ## Installation
 
 In your `Gemfile`, add the following:
+    
     gem 'plan_b'
 
 Run:
+
     bundle install
 
-mount PlanB::Engine, at: "/plan_b"
-rake plan_b:install:migrations
-rake db:migrate SCOPE=plan_b
+In `config/routes.rb`:
+
+    mount PlanB::Engine, at: "/plan_b"
+    
+Finally, install and run the migrations:
+
+    rake plan_b:install:migrations
+    rake db:migrate SCOPE=plan_b
 
 ## Bring your own authentication
 
 in `config/initializer/plan_b.rb`
 
+```ruby
 PlanB::Config.authenticate_with do |config|
   redirect_to main_app.root_path unless current_user
 end
+```
 
 ## TODO
 
