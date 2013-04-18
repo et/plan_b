@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.summary     = 'An itinerary planning tool.'
   s.description = 'Plan B is a Rails engine that provides a flexible itinerary planning.'
 
-  s.files = Dir['{app,config,db,lib}/**/*'] + ['Rakefile', 'README.md']
+  s.files = Dir['{app,config,db,lib,vendor}/**/*'] + ['Rakefile', 'README.md']
   s.test_files = Dir['test/**/*']
 
 end
