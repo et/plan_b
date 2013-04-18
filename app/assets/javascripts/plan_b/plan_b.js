@@ -1,4 +1,9 @@
-angular.module('plan-b', ['plan-b.itineraries.controllers', 'plan-b.itineraries.services']);
+angular.module('plan-b', [
+    'plan-b.itineraries.controllers'
+  , 'plan-b.itineraries.services'
+  , 'plan-b.location-categories.controllers'
+  , 'plan-b.location-categories.services'
+]);
 angular.module('plan-b').config(function ($routeProvider, $locationProvider) {
   var mountPath = $('html').attr('mount-path');
 

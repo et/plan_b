@@ -8,6 +8,8 @@ en:
       plan_b/itinerary:
         title: Title
   plan_b:
+    common:
+      create_new: Create new
     itineraries:
       types:
         backpacking: Backpacking
@@ -27,5 +29,5 @@ en:
         new:
           submit: Create Itinerary
           title_placeholder: Name your itinerary
-    trips:
-      title: Trips
+    location_categories:
+      none_created: You haven't created any location categories yet.

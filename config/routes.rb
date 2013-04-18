@@ -12,8 +12,9 @@ PlanB::Engine.routes.draw do
     end
   end
 
-  resources :hiking_profiles, constraints: FormatTest.new(:json)
-  resources :itineraries,     constraints: FormatTest.new(:json)
+  resources :hiking_profiles,     constraints: FormatTest.new(:json)
+  resources :itineraries,         constraints: FormatTest.new(:json)
+  resources :location_categories, constraints: FormatTest.new(:json)
 
   get '/*foo', to: 'angular#index', constraints: FormatTest.new(:html)
   root to: 'angular#index',         constraints: FormatTest.new(:html)
