@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    plan_b (0.0.1.pre)
+    plan_b (0.0.2.pre1)
       friendly_id (~> 4.0.9)
       haml (~> 4.0)
       rails (~> 3.2)
