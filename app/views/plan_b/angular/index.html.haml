@@ -31,13 +31,17 @@
 
         %span(ng-controller="LocationCategoriesCtrl")
           = PlanB::LocationCategory.model_name.human.pluralize
-          %a.button.tiny.secondary(href='#' ng-click="add()")
-            = t('plan_b.common.create_new')
+          .row.collapse
+            .small-8.columns
+              %input(type="text" ng-model="newLocationCategoryName" placeholder= "#{t 'plan_b.common.create_new'}")
+            .small-4.columns
+              %a.button.secondary(href='#' ng-click="add()")
+                Add
           %ul.side-nav
             %li(ng-hide="locationCategories.length")
               = t('plan_b.location_categories.none_created')
             %li(ng-repeat="category in locationCategories")
-              %a(href='/plan_b/location_categories/{{category.id}}/edit') {{category.name}}
+              {{category.name}}
 
     %footer.row
       .large-12.columns

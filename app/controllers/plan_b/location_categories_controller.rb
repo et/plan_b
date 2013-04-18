@@ -8,5 +8,11 @@ module PlanB
       @location_categories = LocationCategory.all
       respond_with @location_categories
     end
+
+    def create
+      @location_category = LocationCategory.new params[:location_category]
+      @location_category.save
+      respond_with @location_category
+    end
   end
 end

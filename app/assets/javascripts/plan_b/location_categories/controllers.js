@@ -1,5 +1,5 @@
 angular.module('plan-b.location-categories.controllers', ['plan-b.location-categories.services'])
-.controller('LocationCategoriesCtrl', function($scope, LocationCategory) {
+.controller('LocationCategoriesCtrl', function($rootScope, $scope, LocationCategory) {
 
   $scope.loadResources = function() {
     LocationCategory.query(function(locationCategories) {
@@ -9,9 +9,18 @@ angular.module('plan-b.location-categories.controllers', ['plan-b.location-categ
     });
   };
 
+  $scope.$on('locationCategoryUpdate', function() {
+    $scope.loadResources();
+  });
+
   $scope.loadResources();
 
   $scope.add = function() {
-    $scope.locationCategories.push({name: 'Name me'});
+    LocationCategory.save( { location_category: { name: $scope.newLocationCategoryName } }, function(locationCategory) {
+      $rootScope.$broadcast('locationCategoryUpdate');
+    }, function(response) {
+      console.log("error");
+    }
+    );
   };
 });
