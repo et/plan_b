@@ -11,5 +11,8 @@ module PlanB
     friendly_id :title, use: :slugged
 
     validates :title, presence: true, uniqueness: true
+
+    scope :upcoming, where('start > ?', Time.now)
+    scope :past,     where('start < ?', Time.now)
   end
 end

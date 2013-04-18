@@ -13,4 +13,20 @@ describe PlanB::Itinerary do
       expect(itinerary.itinerary_templates.count).to eql(1);
     end
   end
+
+  context 'scopes' do
+    before do
+      @upcoming_itinerary     = PlanB::Itinerary.create title: 'Great stuff',  start: Date.tomorrow
+      @past_itinerary         = PlanB::Itinerary.create title: 'Better stuff', start: Date.yesterday
+      @without_date_itinerary = PlanB::Itinerary.create title: 'Bad stuff'
+    end
+
+    it 'should only return upcoming itineraries' do
+      PlanB::Itinerary.upcoming.should == [@upcoming_itinerary]
+    end
+
+    it 'should only return past itineraries' do
+      PlanB::Itinerary.past.should == [@past_itinerary]
+    end
+  end
 end
